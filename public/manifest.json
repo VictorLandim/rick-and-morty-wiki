@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rick and Morty Wiki",
+  "name": "Rick and Morty Wiki",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo480.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "480x480"
     },
     {
-      "src": "logo512.png",
+      "src": "logo96.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "96x96"
     }
   ],
   "start_url": ".",

@@ -283,10 +283,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Filter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Filter */ "./src/components/Filter/index.js");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Pagination */ "./src/components/Pagination/index.js");
 var _jsxFileName = "X:\\Victor\\Documents\\dev\\web\\rick-and-morty-wiki\\src\\components\\CharacterList\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -308,8 +316,8 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 // }
 
 const GET_CHARACTERS = apollo_boost__WEBPACK_IMPORTED_MODULE_2__["gql"]`
-  query characters($page: Int!) {
-    characters(page: $page) {
+  query characters($page: Int!, $filter: FilterCharacter) {
+    characters(page: $page, filter: $filter) {
       results {
         id
         name
@@ -352,7 +360,7 @@ const Error = ({
   color: "gray.400",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 58
+    lineNumber: 59
   },
   __self: undefined
 }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
@@ -362,7 +370,7 @@ const Error = ({
   fontWeight: "semibold",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 66
+    lineNumber: 67
   },
   __self: undefined
 }, "Could not fetch Rick and Morty characters..."), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["Box"], {
@@ -370,18 +378,29 @@ const Error = ({
   size: "64px",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 69
+    lineNumber: 70
   },
   __self: undefined
 }), __jsx("pre", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 70
+    lineNumber: 71
   },
   __self: undefined
 }, JSON.stringify(error, null, 4)));
 
 const CharacterList = () => {
+  const INITIAL_FILTER = {
+    name: null,
+    status: null,
+    species: null,
+    type: null,
+    gender: null
+  };
+  const {
+    0: filter,
+    1: setFilter
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(_objectSpread({}, INITIAL_FILTER));
   const {
     loading,
     error,
@@ -389,27 +408,46 @@ const CharacterList = () => {
     fetchMore
   } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_1__["useQuery"])(GET_CHARACTERS, {
     variables: {
-      page: 0
+      page: 0,
+      filter
     },
-    notifyOnNetworkStatusChange: true
+    notifyOnNetworkStatusChange: true,
+    fetchPolicy: 'cache-first'
   });
-  const characterData = data ? data['characters']['results'] : [];
   if (loading) return __jsx(_Loader__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 92
     },
     __self: undefined
   });
+  const characterData = data ? data['characters']['results'] : [];
+  const {
+    pages,
+    next,
+    prev
+  } = data['characters']['info'];
+
+  const onPrev = () => paginate(data, fetchMore, prev);
+
+  const onNext = () => paginate(data, fetchMore, next);
+
   return __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["Box"], {
-    p: {
+    paddingTop: "20px",
+    paddingBottom: "20px",
+    paddingLeft: {
+      md: '50px',
+      sm: '40px',
+      xs: '20px'
+    },
+    paddingRight: {
       md: '50px',
       sm: '40px',
       xs: '20px'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 101
     },
     __self: undefined
   }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
@@ -417,20 +455,31 @@ const CharacterList = () => {
     size: "2xl",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 107
     },
     __self: undefined
   }, "Rick and Morty Characters:"), error ? __jsx(Error, {
     error: error,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 112
     },
     __self: undefined
   }) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_Filter__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 115
+    },
+    __self: undefined
+  }), __jsx(_Pagination__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    prev: prev,
+    next: next,
+    onPrev: onPrev,
+    onNext: onNext,
+    pages: pages,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116
     },
     __self: undefined
   }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["SimpleGrid"], {
@@ -443,7 +492,7 @@ const CharacterList = () => {
     spacingY: "30px",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 118
     },
     __self: undefined
   }, characterData.map(character => __jsx(_CharacterItem__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
@@ -451,45 +500,32 @@ const CharacterList = () => {
   }, character, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 120
     },
     __self: undefined
-  })))), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["Box"], {
-    d: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    mt: "50px",
+  })))), __jsx(_Pagination__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    prev: prev,
+    next: next,
+    onPrev: onPrev,
+    onNext: onNext,
+    pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 124
     },
     __self: undefined
-  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-    onClick: () => loadMoreCharacters(data, fetchMore),
-    color: "blue",
-    size: "lg",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 103
-    },
-    __self: undefined
-  }, "Fetch more!"))));
+  })));
 };
 
-const loadMoreCharacters = (data, fetchMore) => fetchMore({
+const paginate = (data, fetchMore, page) => fetchMore({
   variables: {
-    page: data['characters']['info']['next']
+    page
   },
   updateQuery: (previousResult, {
     fetchMoreResult
   }) => {
     if (!fetchMoreResult) return previousResult;
     return fetchMoreResult;
-    return Object.assign({}, previousResult, {
-      characters: {
-        results: [...previousResult.characters.results, ...fetchMoreResult.characters.results]
-      }
-    });
   }
 });
 
@@ -528,7 +564,7 @@ const Filter = () => {
     __self: undefined
   }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["SimpleGrid"], {
     columns: {
-      md: 3,
+      md: 6,
       xs: 1
     },
     spacing: "15px",
@@ -537,112 +573,98 @@ const Filter = () => {
       lineNumber: 7
     },
     __self: undefined
-  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
-    placeholder: "Select gender",
+  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    placeholder: "Name",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: undefined
-  }, __jsx("option", {
-    value: "option1",
+  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
+    placeholder: "Status",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: undefined
-  }, "Male"), __jsx("option", {
+  }, __jsx("option", {
     value: "option2",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: undefined
-  }, "Female"), __jsx("option", {
-    value: "option3",
+  }, "Alive"), __jsx("option", {
+    value: "option1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
     },
     __self: undefined
-  }, "Genderless"), __jsx("option", {
+  }, "Dead"), __jsx("option", {
     value: "option3",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
     },
     __self: undefined
-  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
-    placeholder: "Select species",
+  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    placeholder: "Species",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
     },
     __self: undefined
-  }, __jsx("option", {
-    value: "option1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: undefined
-  }, "Male"), __jsx("option", {
-    value: "option2",
+  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    placeholder: "Type",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
     },
     __self: undefined
-  }, "Female"), __jsx("option", {
-    value: "option3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: undefined
-  }, "Genderless"), __jsx("option", {
-    value: "option3",
+  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
+    placeholder: "Gender",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 18
-    },
-    __self: undefined
-  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
-    placeholder: "Select status",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
     },
     __self: undefined
   }, __jsx("option", {
     value: "option1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 19
     },
     __self: undefined
   }, "Male"), __jsx("option", {
     value: "option2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 20
     },
     __self: undefined
   }, "Female"), __jsx("option", {
     value: "option3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 21
     },
     __self: undefined
   }, "Genderless"), __jsx("option", {
     value: "option3",
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    variantColor: "blue",
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 24
     },
     __self: undefined
-  }, "unknown"))));
+  }, "Filter")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Filter);
@@ -740,18 +762,18 @@ const Navbar = () => __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["PseudoB
     lineNumber: 6
   },
   __self: undefined
-}, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-  href: "/",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 15
-  },
-  __self: undefined
 }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Box"], {
   d: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   flexDir: "row",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15
+  },
+  __self: undefined
+}, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  href: "/",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 16
@@ -781,23 +803,84 @@ const Navbar = () => __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["PseudoB
     lineNumber: 19
   },
   __self: undefined
-}, "Rick and Morty Wiki")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+}, "Rick and Morty Wiki"))), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Link"], {
   href: "https://github.com/VictorLandim/rick-and-morty-wiki",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 21
+    lineNumber: 22
   },
   __self: undefined
 }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Box"], {
   as: react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaGithub"],
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 22
+    lineNumber: 23
   },
   __self: undefined
-})))));
+}))));
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./src/components/Pagination/index.js":
+/*!********************************************!*\
+  !*** ./src/components/Pagination/index.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @chakra-ui/core */ "@chakra-ui/core");
+/* harmony import */ var _chakra_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "X:\\Victor\\Documents\\dev\\web\\rick-and-morty-wiki\\src\\components\\Pagination\\index.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const Pagination = ({
+  next,
+  prev,
+  onNext,
+  onPrev,
+  pages
+}) => __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Box"], {
+  mt: "20px",
+  mb: "20px",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5
+  },
+  __self: undefined
+}, prev && __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  leftIcon: "arrow-back",
+  onClick: onPrev,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 7
+  },
+  __self: undefined
+}, prev), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  disabled: true,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11
+  },
+  __self: undefined
+}, prev ? prev + 1 : next - 1), next && __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  rightIcon: "arrow-forward",
+  onClick: onNext,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13
+  },
+  __self: undefined
+}, next));
+
+/* harmony default export */ __webpack_exports__["default"] = (Pagination);
 
 /***/ }),
 
@@ -818,7 +901,11 @@ __webpack_require__.r(__webpack_exports__);
 
 const config = {
   link: new apollo_boost__WEBPACK_IMPORTED_MODULE_1__["HttpLink"]({
-    uri: 'https://rickandmortyapi.com/graphql'
+    uri: 'https://rickandmortyapi.com/graphql',
+    opts: {
+      credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
+
+    }
   })
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(next_apollo__WEBPACK_IMPORTED_MODULE_0__["withData"])(config));

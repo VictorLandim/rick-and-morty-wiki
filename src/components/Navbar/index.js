@@ -12,17 +12,17 @@ const Navbar = () => (
     borderColor="blue.300"
     shadow="md"
   >
-    <Link href="/">
-      <Box d="flex" alignItems="center" justifyContent="space-between" flexDir="row">
+    <Box d="flex" alignItems="center" justifyContent="space-between" flexDir="row">
+      <Link href="/">
         <Box d="flex" alignItems="center" flexDir="row">
           <Box as={FaRadiationAlt} mr="10px" />
           <Heading fontSize="sm">Rick and Morty Wiki</Heading>
         </Box>
-        <Link href="https://github.com/VictorLandim/rick-and-morty-wiki">
-          <Box as={FaGithub} />
-        </Link>
-      </Box>
-    </Link>
+      </Link>
+      <Link href="https://github.com/VictorLandim/rick-and-morty-wiki">
+        <Box as={FaGithub} />
+      </Link>
+    </Box>
   </PseudoBox>
 );
 

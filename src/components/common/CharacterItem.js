@@ -78,8 +78,9 @@ const CharacterItem = props => {
           {location.name}
         </Box>
 
-        <Link href={`/character/${id}`}>
+        <Link href="/character/[pid]" as={`/character/${id}`} prefetch={false}>
           <Button
+            as="a"
             alignSelf="flex-end"
             rightIcon="arrow-forward"
             mt="10px"

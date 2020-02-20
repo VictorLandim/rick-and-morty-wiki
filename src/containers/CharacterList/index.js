@@ -26,8 +26,7 @@ const CharacterList = () => {
   const { loading, error, data, fetchMore } = useQuery(GET_CHARACTER_LIST(gql), {
     variables: { page: 1, filter },
     notifyOnNetworkStatusChange: true,
-    fetchPolicy: 'cache-first'
-    // fetchPolicy: 'network-only'
+    fetchPolicy: 'cache-and-network'
   });
 
   const characterData = data ? data['characters']['results'] : [];
@@ -62,7 +61,7 @@ const CharacterList = () => {
         {!characterData ? (
           <Error message="Could not find any characters for that search..." />
         ) : (
-          <SimpleGrid columns={{ md: 5, sm: 3, xs: 1 }} spacingX="30px" spacingY="30px">
+          <SimpleGrid columns={{ md: 5, sm: 2, xs: 1 }} spacingX="30px" spacingY="30px">
             {characterData.map(character => (
               <CharacterItem key={character.id} {...character} />
             ))}
@@ -82,7 +81,7 @@ const CharacterList = () => {
           Find Rick and Morty characters
         </Heading>
 
-        <Filter setFilter={setFilter} onFilter={() => {}} />
+        <Filter setFilter={setFilter} />
 
         {renderContent()}
       </Container>

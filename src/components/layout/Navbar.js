@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Link,
-  PseudoBox,
-  Heading,
-  useColorMode,
-  Button,
-  Image,
-  IconButton
-} from '@chakra-ui/core';
+import { Box, Link, PseudoBox, Heading, useColorMode, Image, IconButton } from '@chakra-ui/core';
 import { FaGithub, FaSun, FaMoon } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -37,7 +28,7 @@ const Navbar = () => {
           <Box size={28} as={FaGithub} />
         </Link>
         <Link href="/">
-          <Box d="flex" alignItems="center" flexDir="row">
+          <Box as="a" d="flex" alignItems="center" flexDir="row">
             <Image src="/rick.svg" w="32px" alt="Rick Sanchez" />
             <Heading
               marginLeft="15px"

@@ -10,10 +10,11 @@ The app is live on: [Rick and Morty Wiki](https://rick-n-morty-wiki.netlify.com/
 
 Alternatively, you can build it from source following the steps bellow:
 
-- Clone the repo;
+- Run `git clone https://github.com/VictorLandim/rick-and-morty-wiki.git` to clone the repo;
 - Run `yarn` to install dependencies.;
 - Run `yarn test` to run the tests;
 - Run `yarn dev` to launch it;
+- Run `yarn build` to build it;
 
 ## TODO 🎯
 
@@ -22,15 +23,17 @@ Alternatively, you can build it from source following the steps bellow:
 - [x] Create list page.
 - [x] Render empty results message.
 - [x] Make the design responsive.
-- [ ] Create details page.
+- [x] Create details page.
 - [x] Implement filters.
 - [x] Add meta tags.
-- [ ] Add route loading screen.
+- [x] Add route loading screen.
+- [x] Add go back button on details page.
+- [x] Collapse filter on mobile
 
 ### Bugs 🐛
 
-- [ ] Fix card flex behaviour.
 - [x] Fix dark mode bug.
+- [ ] Fix card flex behaviour.
 
 ### Extra ⭐
 

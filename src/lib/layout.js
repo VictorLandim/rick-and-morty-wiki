@@ -1,5 +1,5 @@
 import React from 'react';
-import { CSSReset, ThemeProvider, ColorModeProvider, Box, DarkMode } from '@chakra-ui/core';
+import { CSSReset, ThemeProvider, Box, DarkMode } from '@chakra-ui/core';
 import theme from './theme';
 import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';

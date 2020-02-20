@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 import { gql } from 'apollo-boost';
-import {
-  Box,
-  Heading,
-  SimpleGrid,
-  Text,
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Image,
-  Divider
-} from '@chakra-ui/core';
+import { Box, Heading, Image, Divider, Button } from '@chakra-ui/core';
+import { FaMapMarkerAlt, FaGlobeAfrica, FaUserAlt, FaUserPlus } from 'react-icons/fa';
+
 import { GET_CHARACTER_DETAILS } from '../../lib/queries';
 import { Loader } from '../../components/common';
-import { Error } from '../CharacterList/styles';
-import { Title, Episode } from './styles';
 import Layout from '../../lib/layout';
+import { Error } from '../CharacterList/styles';
+import { Title, Episode, Row } from './styles';
+import { genderMap, statusMap } from '../../utils/styleMaps';
 
 const CharacterDetails = () => {
   const router = useRouter();
@@ -29,12 +21,28 @@ const CharacterDetails = () => {
   const { loading, error, data } = useQuery(GET_CHARACTER_DETAILS(gql), {
     variables: { id: pid },
     notifyOnNetworkStatusChange: true,
-    fetchPolicy: 'cache-first'
+    fetchPolicy: 'cache-and-network'
   });
 
   const { name, image, status, species, type, gender, origin, location, episode } = data
     ? data['character']
     : {};
+
+  const renderButton = () => (
+    <Link href="/">
+      <Button
+        variant="ghost"
+        size="md"
+        as="a"
+        leftIcon="arrow-left"
+        variantColor="blue"
+        marginTop="10px"
+        marginLeft="10px"
+      >
+        Go back
+      </Button>
+    </Link>
+  );
 
   const renderEpisodes = () => (
     <ul>
@@ -49,61 +57,67 @@ const CharacterDetails = () => {
     if (error) return <Error error={error} message="Error fetching character data..." />;
 
     return (
-      <Box
-        padding={{ md: '20px', sm: '20px', xs: '20px' }}
-        marginLeft={{ md: '200px', sm: '20px', xs: '20px' }}
-        marginRight={{ md: '200px', sm: '20px', xs: '20px' }}
-        marginTop="50px"
-        pb="100px"
-        borderRadius="10px"
-        d="flex"
-        justifyContent="normal"
-        flexDir={{ md: 'row', sm: 'column', xs: 'column' }}
-      >
+      <>
+        {renderButton()}
+
         <Box
-          flex="0 0 60%"
-          p="100px"
-          ml="50px"
-          mr="50px"
-          paddingTop="0px"
-          paddingBottom="0px"
-          shadow="md"
+          flexDir={{ md: 'row', sm: 'column', xs: 'column' }}
+          d="flex"
+          justifyContent="normal"
+          alignItems={{ md: 'flex-start', sm: 'stretch', xs: 'stretch' }}
+          padding={{ md: '20px', sm: '10px', xs: '10px' }}
+          borderRadius="10px"
+          maxWidth="100%"
+          width="900px"
+          marginLeft="auto"
+          marginRight="auto"
         >
-          <Image
-            src={image}
-            fallbackSrc="/placeholder.png"
-            alt={name}
-            width="60%"
-            borderRadius="1000px"
-            border="5px solid teal"
-            shadow="md"
-            justifySelf="center"
-            margin="0 auto"
-          />
-          <Heading fontSize="2xl" textAlign="center" mt="20px">
-            {name}
-          </Heading>
-          <Divider />
+          <Box
+            flex="0 0 60%"
+            shadow="lg"
+            marginRight={{ md: '20px', sm: '0px', xs: '0px' }}
+            marginBottom={{ md: '0px', sm: '20px', xs: '20px' }}
+            marginTop={{ md: '0px', sm: '20px', xs: '20px' }}
+            paddingTop="15px"
+          >
+            <Image
+              src={image}
+              fallbackSrc="/placeholder.png"
+              alt={name}
+              width="50%"
+              borderRadius="1000px"
+              border="2px solid teal"
+              shadow="lg"
+              justifySelf="center"
+              margin="0 auto"
+            />
+            <Heading fontSize="3xl" textAlign="center" mt="20px" mb="20px">
+              {name}
+            </Heading>
+            <Divider />
 
-          <Box>{species}</Box>
-          <Box>{type}</Box>
+            <Box p="20px">
+              <Title text="Info" />
 
-          <Box>{status}</Box>
-          <Box>{gender}</Box>
+              <Row {...statusMap[status]} label="Status:" />
+              <Row {...genderMap[gender]} label="Gender:" />
+              <Row color="gray" text={species} icon={FaUserAlt} label="Species:" />
+              <Row color="gray" text={type ? type : 'No type'} icon={FaUserPlus} label="Type:" />
+              <Row color="gray" text={origin.name} icon={FaGlobeAfrica} label="Origin:" />
+              <Row color="gray" text={location.name} icon={FaMapMarkerAlt} label="Location:" />
+            </Box>
+          </Box>
+          <Box p={{ md: '30px', sm: '20px', xs: '20px' }} pt="15px" pb="10px" flex="1" shadow="lg">
+            <Title text="Appears on" />
 
-          <Box>{origin.name}</Box>
-          <Box>{location.name}</Box>
-          <Box></Box>
+            {renderEpisodes()}
+          </Box>
         </Box>
-        <Box pl="20px" pr="20px" ml="50px" mr="50px" flex="1" shadow="md">
-          <Title>Appears on:</Title>
-          {renderEpisodes()}
-        </Box>
-      </Box>
+      </>
     );
   };
 
-  return <Layout title="Rick and Morty Wiki | Character">{renderContent()}</Layout>;
+  return <Layout title={`Rick and Morty Wiki | ${name}`}>{renderContent()}</Layout>;
 };
 
 export default CharacterDetails;

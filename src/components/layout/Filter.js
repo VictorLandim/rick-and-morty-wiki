@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { Box, Select, SimpleGrid, Input, Button, IconButton, Text } from '@chakra-ui/core';
+import {
+  Box,
+  Select,
+  SimpleGrid,
+  Input,
+  Button,
+  IconButton,
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+  AccordionIcon
+} from '@chakra-ui/core';
 
-const Label = ({ text }) => (
-  <Text fontWeight="semibold" mb="5px">
-    {text}
-  </Text>
-);
-
-const Filter = props => {
-  const { setFilter, onFilter } = props;
-
+const Filter = ({ setFilter }) => {
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
   const [species, setSpecies] = useState('');
@@ -17,13 +21,6 @@ const Filter = props => {
   const [gender, setGender] = useState('');
 
   const onSubmit = () => {
-    console.log({
-      name: name === '' ? null : name,
-      status: status === '' ? null : status,
-      species: species === '' ? null : species,
-      type: type === '' ? null : type,
-      gender: gender === '' ? null : gender
-    });
     setFilter({
       name: name === '' ? null : name,
       status: status === '' ? null : status,
@@ -49,15 +46,17 @@ const Filter = props => {
     });
   };
 
-  return (
+  const defaultFilter = () => (
     <Box border="0px solid gray" borderRadius={5} mt="20px" mb="20px">
-      <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px" as="form" onSubmit={onFilter}>
+      <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px">
         <Input placeholder="No name" value={name} onChange={e => setName(e.target.value)} />
+
         <Select placeholder="No status" value={status} onChange={e => setStatus(e.target.value)}>
           <option value="Alive">Alive</option>
           <option value="Dead">Dead</option>
           <option value="unknown">unknown</option>
         </Select>
+
         <Input
           placeholder="No species"
           value={species}
@@ -72,6 +71,7 @@ const Filter = props => {
           <option value="Genderless">Genderless</option>
           <option value="unknown">unknown</option>
         </Select>
+
         <Box d="flex">
           <Button variantColor="blue" flex="1" marginRight="10px" onClick={onSubmit}>
             Filter
@@ -86,6 +86,27 @@ const Filter = props => {
         </Box>
       </SimpleGrid>
     </Box>
+  );
+
+  const mobileFilter = () => (
+    <Accordion allowToggle defaultIndex={[-1]}>
+      <AccordionItem>
+        <AccordionHeader>
+          <Box flex="1" textAlign="left">
+            Filters
+          </Box>
+          <AccordionIcon />
+        </AccordionHeader>
+        <AccordionPanel pb={4}>{defaultFilter()}</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+
+  return (
+    <>
+      <Box display={{ lg: 'none', md: 'none', sm: 'block', xs: 'block' }}>{mobileFilter()}</Box>
+      <Box display={{ lg: 'block', md: 'block', sm: 'none', xs: 'none' }}>{defaultFilter()}</Box>
+    </>
   );
 };
 

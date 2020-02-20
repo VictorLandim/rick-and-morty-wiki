@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import { Box, Heading, Image, PseudoBox, Button, Divider, Tooltip } from '@chakra-ui/core';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import Link from 'next/link';
+
 import { genderMap, statusMap } from '../../utils/styleMaps';
 
 const CharacterItem = props => {
@@ -18,7 +19,7 @@ const CharacterItem = props => {
         transform: 'scale(1.05)'
       }}
     >
-      <Image src={image} fallbackSrc="placeholder.png" alt={name} width="100%" />
+      <Image src={image} fallbackSrc="/placeholder.png" alt={name} width="100%" />
 
       <Box p="15px">
         <Tooltip hasArrow label={name} placement="top">
@@ -78,7 +79,7 @@ const CharacterItem = props => {
           {location.name}
         </Box>
 
-        <Link href="/character/[pid]" as={`/character/${id}`} prefetch={true}>
+        <Link href="/character/[pid]" as={`/character/${id}`}>
           <Button
             as="a"
             alignSelf="flex-end"

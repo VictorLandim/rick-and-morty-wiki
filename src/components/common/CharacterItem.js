@@ -1,60 +1,11 @@
 import React from 'react';
 import { Box, Heading, Image, PseudoBox, Button, Divider, Tooltip } from '@chakra-ui/core';
-import {
-  FaRegDizzy,
-  FaRegFlushed,
-  FaRegGrin,
-  FaMapMarkerAlt,
-  FaGenderless,
-  FaMars,
-  FaVenus,
-  FaTransgender
-} from 'react-icons/fa';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import Link from 'next/link';
+import { genderMap, statusMap } from '../../utils/styleMaps';
 
 const CharacterItem = props => {
   const { id, name, status, species, type, gender, image, location } = props;
-
-  const statusMap = {
-    Alive: {
-      color: 'teal.500',
-      icon: FaRegGrin,
-      text: 'Alive'
-    },
-    Dead: {
-      color: 'red.500',
-      icon: FaRegDizzy,
-      text: 'Dead'
-    },
-    unknown: {
-      color: 'purple.500',
-      icon: FaRegFlushed,
-      text: 'Status unknown'
-    }
-  };
-
-  const genderMap = {
-    Male: {
-      color: 'blue.400',
-      icon: FaMars,
-      text: 'Male'
-    },
-    Female: {
-      color: 'pink.400',
-      icon: FaVenus,
-      text: 'Female'
-    },
-    Genderless: {
-      color: 'gray.500',
-      icon: FaGenderless,
-      text: 'Genderless'
-    },
-    unknown: {
-      color: 'purple.400',
-      icon: FaTransgender,
-      text: 'Gender unknown'
-    }
-  };
 
   return (
     <PseudoBox
@@ -84,7 +35,17 @@ const CharacterItem = props => {
           fontSize="xs"
           textTransform="uppercase"
         >
-          {species}
+          {`${species}`}
+        </Box>
+
+        <Box
+          color="blue.200"
+          fontWeight="semibold"
+          letterSpacing="wide"
+          fontSize="10px"
+          textTransform="uppercase"
+        >
+          {type ? type : 'No type'}
         </Box>
 
         <Divider />

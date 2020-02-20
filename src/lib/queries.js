@@ -1,16 +1,3 @@
-// location {
-//   id
-//   name
-//   type
-// }
-
-// origin {
-//   id
-//   name
-//   type
-//   dimension
-// }
-
 export const GET_CHARACTER_LIST = gql => gql`
   query characters($page: Int!, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
@@ -21,18 +8,22 @@ export const GET_CHARACTER_LIST = gql => gql`
         species
         type
         gender
-
         image
+        origin {
+          id
+          name
+          dimension
+        }
+        location {
+          id
+          name
+        }
         episode {
           id
           name
           air_date
+          episode
         }
-
-        location {
-          name
-        }
-        created
       }
 
       info {
@@ -48,11 +39,13 @@ export const GET_CHARACTER_LIST = gql => gql`
 export const GET_CHARACTER_DETAILS = gql => gql`
   query CharacterDetails($id: ID) {
     character(id: $id) {
+      id
       name
       status
       species
       type
       gender
+      image
       origin {
         id
         name
@@ -62,8 +55,6 @@ export const GET_CHARACTER_DETAILS = gql => gql`
         id
         name
       }
-
-      image
       episode {
         id
         name

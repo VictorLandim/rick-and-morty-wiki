@@ -18,15 +18,16 @@ The app is live on: [Rick and Morty Wiki](https://rick-n-morty-wiki.netlify.com/
 
 ### Bugs 🐛
 - [ ] Fix card flex behaviour.
-- [x] Implement pagination.
+- [ ] Fix dark mode bug.
 
 ### Extra ⭐
+- [x] Implement pagination.
 - [ ] Create "loading card" component.
 - [ ] Test components with @react-testing-library.
 - [ ] Add e2e tests using Cypresss.
 - [x] Implement dark mode.
+- [ ] Optmizide GraphQL queries (share listing with details queries)
 
-- [ ] Fix dark mode bug.
 
 ## Credits:
 - Rick and Morty icons by [Icons8](https://icons8.com).

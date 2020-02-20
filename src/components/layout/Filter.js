@@ -1,51 +1,89 @@
-import React from 'react';
-import { Box, Select, SimpleGrid, Input, Button } from '@chakra-ui/core';
+import React, { useState } from 'react';
+import { Box, Select, SimpleGrid, Input, Button, IconButton, Text } from '@chakra-ui/core';
+
+const Label = ({ text }) => (
+  <Text fontWeight="semibold" mb="5px">
+    {text}
+  </Text>
+);
 
 const Filter = props => {
-  const { filter, setFilter, onFilter } = props;
+  const { setFilter, onFilter } = props;
+
+  const [name, setName] = useState('');
+  const [status, setStatus] = useState('');
+  const [species, setSpecies] = useState('');
+  const [type, setType] = useState('');
+  const [gender, setGender] = useState('');
+
+  const onSubmit = () => {
+    console.log({
+      name: name === '' ? null : name,
+      status: status === '' ? null : status,
+      species: species === '' ? null : species,
+      type: type === '' ? null : type,
+      gender: gender === '' ? null : gender
+    });
+    setFilter({
+      name: name === '' ? null : name,
+      status: status === '' ? null : status,
+      species: species === '' ? null : species,
+      type: type === '' ? null : type,
+      gender: gender === '' ? null : gender
+    });
+  };
+
+  const onClear = () => {
+    setName('');
+    setStatus('');
+    setSpecies('');
+    setType('');
+    setGender('');
+
+    setFilter({
+      name: null,
+      status: null,
+      species: null,
+      type: null,
+      gender: null
+    });
+  };
 
   return (
     <Box border="0px solid gray" borderRadius={5} mt="20px" mb="20px">
-      <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px">
-        <Input
-          placeholder="Name"
-          value={filter.name}
-          onChange={e => setFilter({ ...filter, name: e.target.value })}
-        />
-        <Select
-          placeholder="Status"
-          value={filter.status}
-          onChange={e => setFilter({ ...filter, status: e.target.value })}
-        >
-          <option value="option2">Alive</option>
-          <option value="option1">Dead</option>
-          <option value="option3">unknown</option>
+      <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px" as="form" onSubmit={onFilter}>
+        <Input placeholder="No ame" value={name} onChange={e => setName(e.target.value)} />
+        <Select placeholder="No status" value={status} onChange={e => setStatus(e.target.value)}>
+          <option value="Alive">Alive</option>
+          <option value="Dead">Dead</option>
+          <option value="unknown">unknown</option>
         </Select>
         <Input
-          placeholder="Species"
-          value={filter.species}
-          onChange={e => setFilter({ ...filter, species: e.target.value })}
+          placeholder="No species"
+          value={species}
+          onChange={e => setSpecies(e.target.value)}
         />
 
-        <Input
-          placeholder="Type"
-          value={filter.type}
-          onChange={e => setFilter({ ...filter, type: e.target.value })}
-        />
+        <Input placeholder="No type" value={type} onChange={e => setType(e.target.value)} />
 
-        <Select
-          placeholder="Gender"
-          value={filter.gender}
-          onChange={e => setFilter({ ...filter, gender: e.target.value })}
-        >
-          <option value="option1">Male</option>
-          <option value="option2">Female</option>
-          <option value="option3">Genderless</option>
-          <option value="option3">unknown</option>
+        <Select placeholder="No gender" value={gender} onChange={e => setGender(e.target.value)}>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Genderless">Genderless</option>
+          <option value="unknown">unknown</option>
         </Select>
-        <Button variantColor="blue" onClick={onFilter}>
-          Filter
-        </Button>
+        <Box d="flex">
+          <Button variantColor="blue" flex="1" marginRight="10px" onClick={onSubmit}>
+            Filter
+          </Button>
+          <IconButton
+            onClick={onClear}
+            marginLeft="auto"
+            variantColor="red"
+            aria-label="Clear filters"
+            icon="small-close"
+          />
+        </Box>
       </SimpleGrid>
     </Box>
   );

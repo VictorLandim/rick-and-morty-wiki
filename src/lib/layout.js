@@ -1,5 +1,5 @@
 import React from 'react';
-import { CSSReset, ThemeProvider, ColorModeProvider, Box } from '@chakra-ui/core';
+import { CSSReset, ThemeProvider, ColorModeProvider, Box, DarkMode } from '@chakra-ui/core';
 import theme from './theme';
 import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';
@@ -7,7 +7,7 @@ import Footer from '../components/layout/Footer';
 
 const Layout = ({ children, title }) => (
   <ThemeProvider theme={theme}>
-    <ColorModeProvider>
+    <DarkMode>
       <CSSReset />
       <Head>
         <title>{title}</title>
@@ -23,7 +23,7 @@ const Layout = ({ children, title }) => (
         {children}
         <Footer />
       </Box>
-    </ColorModeProvider>
+    </DarkMode>
   </ThemeProvider>
 );
 

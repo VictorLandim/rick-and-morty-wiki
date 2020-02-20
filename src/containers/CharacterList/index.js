@@ -24,7 +24,7 @@ const CharacterList = () => {
   const [filter, setFilter] = useState({ ...INITIAL_FILTER });
 
   const { loading, error, data, fetchMore } = useQuery(GET_CHARACTER_LIST(gql), {
-    variables: { page: 1, filter: INITIAL_FILTER },
+    variables: { page: 1, filter },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: 'cache-first'
     // fetchPolicy: 'network-only'
@@ -36,18 +36,6 @@ const CharacterList = () => {
   const onPrev = () => paginate(data, fetchMore, prev);
   const onNext = () => paginate(data, fetchMore, next);
 
-  const onFilter = () =>
-    fetchMore({
-      variables: {
-        filter
-      },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult) return previousResult;
-
-        return fetchMoreResult;
-      }
-    });
-
   const renderContent = () => {
     if (loading || !data) return <Loader />;
 
@@ -56,35 +44,44 @@ const CharacterList = () => {
 
     return (
       <>
-        <Filter filter={filter} setFilter={setFilter} onFilter={onFilter} />
-        <Pagination prev={prev} next={next} onPrev={onPrev} onNext={onNext} pages={pages} />
+        {characterData && (
+          <Pagination prev={prev} next={next} onPrev={onPrev} onNext={onNext} pages={pages} />
+        )}
 
-        <Text textAlign="center" color="gray.400" marginBottom="0px" fontSize="14px">
-          &bull; {count} characters &bull;
-        </Text>
+        {characterData && (
+          <>
+            <Text textAlign="center" color="gray.400" marginBottom="0px" fontSize="14px">
+              &bull; {count} characters &bull;
+            </Text>
+            <Text textAlign="center" color="gray.400" marginBottom="20px" fontSize="12px">
+              Showing {characterData.length}
+            </Text>
+          </>
+        )}
 
-        <Text textAlign="center" color="gray.400" marginBottom="20px" fontSize="12px">
-          Showing {characterData.length}
-        </Text>
-
-        <SimpleGrid columns={{ md: 5, sm: 3, xs: 1 }} spacingX="30px" spacingY="30px">
-          {characterData.length === 0 ? (
-            <Error message="This search led to no results..." />
-          ) : (
-            characterData.map(character => <CharacterItem key={character.id} {...character} />)
-          )}
-        </SimpleGrid>
-
-        <Pagination prev={prev} next={next} onPrev={onPrev} onNext={onNext} pages={pages} />
+        {!characterData ? (
+          <Error message="Could not find any characters for that search..." />
+        ) : (
+          <SimpleGrid columns={{ md: 5, sm: 3, xs: 1 }} spacingX="30px" spacingY="30px">
+            {characterData.map(character => (
+              <CharacterItem key={character.id} {...character} />
+            ))}
+          </SimpleGrid>
+        )}
+        {characterData && (
+          <Pagination prev={prev} next={next} onPrev={onPrev} onNext={onNext} pages={pages} />
+        )}
       </>
     );
   };
 
   return (
     <Container>
-      <Heading as="h1" size="xl">
-        Rick and Morty Characters:
+      <Heading as="h1" fontSize="36px" mb="45px" textAlign="center">
+        Find Rick and Morty characters
       </Heading>
+
+      <Filter setFilter={setFilter} onFilter={() => {}} />
 
       {renderContent()}
     </Container>

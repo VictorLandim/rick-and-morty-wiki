@@ -8,7 +8,7 @@ import { FaMapMarkerAlt, FaGlobeAfrica, FaUserAlt, FaUserPlus } from 'react-icon
 
 import { GET_CHARACTER_DETAILS } from '../../lib/queries';
 import { Loader } from '../../components/common';
-import Layout from '../../lib/layout';
+import Layout from '../../utils/layout';
 import { Error } from '../CharacterList/styles';
 import { Title, Episode, Row } from './styles';
 import { genderMap, statusMap } from '../../utils/styleMaps';
@@ -108,7 +108,7 @@ const CharacterDetails = () => {
             </Box>
           </Box>
           <Box p={{ md: '30px', sm: '20px', xs: '20px' }} pt="15px" pb="10px" flex="1" shadow="lg">
-            <Title text="Appears on" />
+            <Title text="Featured in" />
 
             {renderEpisodes()}
           </Box>

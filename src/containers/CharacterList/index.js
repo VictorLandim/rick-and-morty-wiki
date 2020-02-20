@@ -10,7 +10,7 @@ import Pagination from '../../components/layout/Pagination';
 
 import { GET_CHARACTER_LIST } from '../../lib/queries';
 import { Error, Container } from './styles';
-import Layout from '../../lib/layout';
+import Layout from '../../utils/layout';
 
 const CharacterList = () => {
   const INITIAL_FILTER = {
@@ -77,7 +77,7 @@ const CharacterList = () => {
   return (
     <Layout title="Rick and Morty Wiki">
       <Container>
-        <Heading as="h1" fontSize="36px" mb="45px" textAlign="center">
+        <Heading data-testid="heading" as="h1" fontSize="36px" mb="45px" textAlign="center">
           Find Rick and Morty characters
         </Heading>
 

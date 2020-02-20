@@ -13,8 +13,8 @@ Alternatively, you can build it from source following the steps bellow:
 - Run `git clone https://github.com/VictorLandim/rick-and-morty-wiki.git` to clone the repo;
 - Run `yarn` to install dependencies.;
 - Run `yarn test` to run the tests;
-- Run `yarn dev` to launch it;
-- Run `yarn build` to build it;
+- Run `yarn dev` to launch it in development;
+- Run `yarn build` to build it and then run `yarn start` to launch it in production;
 
 ## TODO 🎯
 
@@ -38,10 +38,9 @@ Alternatively, you can build it from source following the steps bellow:
 ### Extra ⭐
 
 - [x] Implement pagination.
+- [x] Implement dark mode.
 - [ ] Create "loading card" component.
 - [ ] Test components with @react-testing-library.
-- [ ] Add e2e tests using Cypresss.
-- [x] Implement dark mode.
 
 ## Credits:
 

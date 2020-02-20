@@ -45,7 +45,7 @@ export const GET_CHARACTER_LIST = gql => gql`
   }
 `;
 
-export const GET_CHARACTER_DETAILS = (gql, id) => gql`
+export const GET_CHARACTER_DETAILS = gql => gql`
   query CharacterDetails($id: ID) {
     character(id: $id) {
       name

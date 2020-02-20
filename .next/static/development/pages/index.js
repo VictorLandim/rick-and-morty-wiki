@@ -13359,7 +13359,7 @@ VisuallyHidden.displayName = "VisuallyHidden";
 /*!*******************************************************!*\
   !*** ./node_modules/@chakra-ui/core/dist/es/index.js ***!
   \*******************************************************/
-/*! exports provided: Avatar, AspectRatioBox, AvatarGroup, Badge, Box, Breadcrumb, Button, ButtonGroup, Callout, Code, Checkbox, CheckboxGroup, CloseButton, Collapse, ControlBox, ColorModeProvider, css, CSSReset, CircularProgress, Divider, Editable, Flex, FormControl, FormHelperText, FormLabel, FormErrorMessage, Grid, Heading, Icon, IconButton, Image, Input, InputAddon, InputGroup, Kbd, Link, List, Stack, SimpleGrid, Menu, Portal, Progress, PseudoBox, Radio, RadioGroup, RadioButtonGroup, Select, Slider, Spinner, Switch, Tabs, Tag, Text, Textarea, useToast, Tooltip, theme, ThemeProvider, useClipboard, useDisclosure, usePrevious, useNumberInput, VisuallyHidden, Accordion, AccordionItem, AccordionIcon, AccordionHeader, AccordionPanel, statuses, Alert, AlertTitle, AlertDescription, AlertIcon, AlertDialog, AlertDialogContent, AlertDialogOverlay, AlertDialogBody, AlertDialogHeader, AlertDialogFooter, AlertDialogCloseButton, AvatarBadge, BreadcrumbLink, BreadcrumbItem, BreadcrumbSeparator, ColorModeContext, useColorMode, DarkMode, LightMode, CircularProgressLabel, Drawer, DrawerContent, DrawerOverlay, DrawerBody, DrawerHeader, DrawerFooter, DrawerCloseButton, EditablePreview, EditableInput, useFormControl, useFormControlContext, InputLeftAddon, InputRightAddon, InputLeftElement, InputRightElement, ListItem, ListIcon, useMenuContext, MenuButton, MenuDivider, MenuGroup, MenuList, MenuItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, PopoverHeader, PopoverFooter, PopoverBody, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, ProgressLabel, valueToPercent, percentToValue, roundValueToStep, clampValue, SliderThumb, SliderTrack, SliderFilledTrack, StatLabel, StatNumber, Stat, StatHelpText, StatArrow, StatGroup, TabContext, TabList, Tab, TabPanel, TabPanels, TagCloseButton, TagIcon, TagLabel, Slide, Scale, SlideIn, useTheme, MenuItemOption, MenuOptionGroup */
+/*! exports provided: Accordion, AccordionItem, AccordionIcon, AccordionHeader, AccordionPanel, statuses, Alert, AlertTitle, AlertDescription, AlertIcon, AlertDialog, AlertDialogContent, AlertDialogOverlay, AlertDialogBody, AlertDialogHeader, AlertDialogFooter, AlertDialogCloseButton, Avatar, AvatarBadge, AspectRatioBox, AvatarGroup, Badge, Box, Breadcrumb, BreadcrumbLink, BreadcrumbItem, BreadcrumbSeparator, Button, ButtonGroup, Callout, Code, Checkbox, CheckboxGroup, CloseButton, Collapse, ControlBox, ColorModeProvider, ColorModeContext, useColorMode, DarkMode, LightMode, css, CSSReset, CircularProgress, CircularProgressLabel, Divider, Drawer, DrawerContent, DrawerOverlay, DrawerBody, DrawerHeader, DrawerFooter, DrawerCloseButton, Editable, EditablePreview, EditableInput, Flex, FormControl, useFormControl, useFormControlContext, FormHelperText, FormLabel, FormErrorMessage, Grid, Heading, Icon, IconButton, Image, Input, InputAddon, InputLeftAddon, InputRightAddon, InputGroup, InputLeftElement, InputRightElement, Kbd, Link, List, ListItem, ListIcon, Stack, SimpleGrid, Menu, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Portal, PopoverHeader, PopoverFooter, PopoverBody, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, Progress, ProgressLabel, PseudoBox, Radio, RadioGroup, RadioButtonGroup, Select, Slider, valueToPercent, percentToValue, roundValueToStep, clampValue, SliderThumb, SliderTrack, SliderFilledTrack, Spinner, StatLabel, StatNumber, Stat, StatHelpText, StatArrow, StatGroup, Switch, Tabs, TabContext, TabList, Tab, TabPanel, TabPanels, Tag, TagCloseButton, TagIcon, TagLabel, Text, Textarea, Slide, Scale, SlideIn, useToast, Tooltip, theme, ThemeProvider, useTheme, useClipboard, useDisclosure, usePrevious, useNumberInput, VisuallyHidden, useMenuContext, MenuButton, MenuDivider, MenuGroup, MenuList, MenuItem, MenuItemOption, MenuOptionGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19728,7 +19728,7 @@ function previouslyCompared(a, b) {
 /*!*****************************************************!*\
   !*** ./node_modules/apollo-boost/lib/bundle.esm.js ***!
   \*****************************************************/
-/*! exports provided: HttpLink, gql, default, ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument */
+/*! exports provided: ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument, HttpLink, gql, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66826,26 +66826,56 @@ const Loader = () => __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Flex"],
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @chakra-ui/core */ "./node_modules/@chakra-ui/core/dist/es/index.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-properties */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptors */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @chakra-ui/core */ "./node_modules/@chakra-ui/core/dist/es/index.js");
+
+
+
+
+
+
+
 var _jsxFileName = "X:\\Victor\\Documents\\dev\\web\\rick-and-morty-wiki\\src\\components\\layout\\Filter.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(Object(source)).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
 
 
 
-const Filter = () => {
-  return __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Box"], {
+
+const Filter = props => {
+  const {
+    filter,
+    setFilter,
+    onFilter
+  } = props;
+  return __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Box"], {
     border: "0px solid gray",
     borderRadius: 5,
     mt: "20px",
     mb: "20px",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 8
     },
     __self: undefined
-  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["SimpleGrid"], {
+  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["SimpleGrid"], {
     columns: {
       md: 6,
       xs: 1
@@ -66853,98 +66883,119 @@ const Filter = () => {
     spacing: "15px",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: undefined
-  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    placeholder: "Name",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: undefined
-  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
-    placeholder: "Status",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: undefined
-  }, __jsx("option", {
-    value: "option2",
+  }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+    placeholder: "Name",
+    value: filter.name,
+    onChange: e => setFilter(_objectSpread({}, filter, {
+      name: e.target.value
+    })),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: undefined
-  }, "Alive"), __jsx("option", {
-    value: "option1",
+  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Select"], {
+    placeholder: "Status",
+    value: filter.status,
+    onChange: e => setFilter(_objectSpread({}, filter, {
+      status: e.target.value
+    })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: undefined
-  }, "Dead"), __jsx("option", {
-    value: "option3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: undefined
-  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    placeholder: "Species",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    },
-    __self: undefined
-  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    placeholder: "Type",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Select"], {
-    placeholder: "Gender",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 15
     },
     __self: undefined
   }, __jsx("option", {
-    value: "option1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    },
-    __self: undefined
-  }, "Male"), __jsx("option", {
     value: "option2",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20
     },
     __self: undefined
-  }, "Female"), __jsx("option", {
-    value: "option3",
+  }, "Alive"), __jsx("option", {
+    value: "option1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
     },
     __self: undefined
-  }, "Genderless"), __jsx("option", {
+  }, "Dead"), __jsx("option", {
     value: "option3",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22
     },
     __self: undefined
-  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variantColor: "blue",
+  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+    placeholder: "Species",
+    value: filter.species,
+    onChange: e => setFilter(_objectSpread({}, filter, {
+      species: e.target.value
+    })),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24
+    },
+    __self: undefined
+  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+    placeholder: "Type",
+    value: filter.type,
+    onChange: e => setFilter(_objectSpread({}, filter, {
+      type: e.target.value
+    })),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Select"], {
+    placeholder: "Gender",
+    value: filter.gender,
+    onChange: e => setFilter(_objectSpread({}, filter, {
+      gender: e.target.value
+    })),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: undefined
+  }, __jsx("option", {
+    value: "option1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, "Male"), __jsx("option", {
+    value: "option2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: undefined
+  }, "Female"), __jsx("option", {
+    value: "option3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: undefined
+  }, "Genderless"), __jsx("option", {
+    value: "option3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44
+    },
+    __self: undefined
+  }, "unknown")), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+    variantColor: "blue",
+    onClick: onFilter,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
     },
     __self: undefined
   }, "Filter")));
@@ -67296,10 +67347,11 @@ const CharacterList = () => {
   } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_9__["useQuery"])(Object(_lib_queries__WEBPACK_IMPORTED_MODULE_16__["GET_CHARACTER_LIST"])(apollo_boost__WEBPACK_IMPORTED_MODULE_10__["gql"]), {
     variables: {
       page: 1,
-      filter
+      filter: INITIAL_FILTER
     },
     notifyOnNetworkStatusChange: true,
-    fetchPolicy: 'cache-first'
+    fetchPolicy: 'cache-first' // fetchPolicy: 'network-only'
+
   });
   const characterData = data ? data['characters']['results'] : [];
   const {
@@ -67313,11 +67365,23 @@ const CharacterList = () => {
 
   const onNext = () => paginate(data, fetchMore, next);
 
+  const onFilter = () => fetchMore({
+    variables: {
+      filter
+    },
+    updateQuery: (previousResult, {
+      fetchMoreResult
+    }) => {
+      if (!fetchMoreResult) return previousResult;
+      return fetchMoreResult;
+    }
+  });
+
   const renderContent = () => {
     if (loading || !data) return __jsx(_components_common_Loader__WEBPACK_IMPORTED_MODULE_13__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 52
       },
       __self: undefined
     });
@@ -67326,14 +67390,17 @@ const CharacterList = () => {
       message: "Could not fetch Rick and Morty characters...",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 55
       },
       __self: undefined
     });
     return __jsx(react__WEBPACK_IMPORTED_MODULE_8___default.a.Fragment, null, __jsx(_components_layout_Filter__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      filter: filter,
+      setFilter: setFilter,
+      onFilter: onFilter,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 59
       },
       __self: undefined
     }), __jsx(_components_layout_Pagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
@@ -67344,7 +67411,7 @@ const CharacterList = () => {
       pages: pages,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 60
       },
       __self: undefined
     }), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_11__["Text"], {
@@ -67354,7 +67421,7 @@ const CharacterList = () => {
       fontSize: "14px",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 62
       },
       __self: undefined
     }, "\u2022 ", count, " characters \u2022"), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_11__["Text"], {
@@ -67364,27 +67431,27 @@ const CharacterList = () => {
       fontSize: "12px",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 66
       },
       __self: undefined
     }, "Showing ", characterData.length), __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_11__["SimpleGrid"], {
       columns: {
         md: 5,
         sm: 3,
-        xs: 2
+        xs: 1
       },
       spacingX: "30px",
       spacingY: "30px",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 70
       },
       __self: undefined
     }, characterData.length === 0 ? __jsx(_styles__WEBPACK_IMPORTED_MODULE_17__["Error"], {
       message: "This search led to no results...",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 72
       },
       __self: undefined
     }) : characterData.map(character => __jsx(_components_common_CharacterItem__WEBPACK_IMPORTED_MODULE_12__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_6__["default"])({
@@ -67392,7 +67459,7 @@ const CharacterList = () => {
     }, character, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 74
       },
       __self: undefined
     })))), __jsx(_components_layout_Pagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
@@ -67403,7 +67470,7 @@ const CharacterList = () => {
       pages: pages,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 78
       },
       __self: undefined
     }));
@@ -67412,7 +67479,7 @@ const CharacterList = () => {
   return __jsx(_styles__WEBPACK_IMPORTED_MODULE_17__["Container"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 84
     },
     __self: undefined
   }, __jsx(_chakra_ui_core__WEBPACK_IMPORTED_MODULE_11__["Heading"], {
@@ -67420,7 +67487,7 @@ const CharacterList = () => {
     size: "xl",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 85
     },
     __self: undefined
   }, "Rick and Morty Characters:"), renderContent());
@@ -67704,7 +67771,7 @@ function _templateObject() {
 //   dimension
 // }
 const GET_CHARACTER_LIST = gql => gql(_templateObject());
-const GET_CHARACTER_DETAILS = (gql, id) => gql(_templateObject2());
+const GET_CHARACTER_DETAILS = gql => gql(_templateObject2());
 
 /***/ }),
 
@@ -67772,13 +67839,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_apollo__WEBPACK_IMPORTED_MODULE_2__["default"])(() => __jsx(_lib_layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  title: "Rick and Morty Wiki",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 7
   },
   __self: undefined
 }, __jsx(_containers_CharacterList__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  title: "Rick and Morty Wiki",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 8

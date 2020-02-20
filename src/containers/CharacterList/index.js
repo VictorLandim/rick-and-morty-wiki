@@ -24,9 +24,10 @@ const CharacterList = () => {
   const [filter, setFilter] = useState({ ...INITIAL_FILTER });
 
   const { loading, error, data, fetchMore } = useQuery(GET_CHARACTER_LIST(gql), {
-    variables: { page: 1, filter },
+    variables: { page: 1, filter: INITIAL_FILTER },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: 'cache-first'
+    // fetchPolicy: 'network-only'
   });
 
   const characterData = data ? data['characters']['results'] : [];
@@ -34,6 +35,18 @@ const CharacterList = () => {
 
   const onPrev = () => paginate(data, fetchMore, prev);
   const onNext = () => paginate(data, fetchMore, next);
+
+  const onFilter = () =>
+    fetchMore({
+      variables: {
+        filter
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return previousResult;
+
+        return fetchMoreResult;
+      }
+    });
 
   const renderContent = () => {
     if (loading || !data) return <Loader />;
@@ -43,7 +56,7 @@ const CharacterList = () => {
 
     return (
       <>
-        <Filter />
+        <Filter filter={filter} setFilter={setFilter} onFilter={onFilter} />
         <Pagination prev={prev} next={next} onPrev={onPrev} onNext={onNext} pages={pages} />
 
         <Text textAlign="center" color="gray.400" marginBottom="0px" fontSize="14px">
@@ -54,7 +67,7 @@ const CharacterList = () => {
           Showing {characterData.length}
         </Text>
 
-        <SimpleGrid columns={{ md: 5, sm: 3, xs: 2 }} spacingX="30px" spacingY="30px">
+        <SimpleGrid columns={{ md: 5, sm: 3, xs: 1 }} spacingX="30px" spacingY="30px">
           {characterData.length === 0 ? (
             <Error message="This search led to no results..." />
           ) : (

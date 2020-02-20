@@ -1,10 +1,4 @@
-import React from 'react';
 import CharacterDetails from '../../containers/CharacterDetails';
-import withData from '../../lib/apollo';
-import Layout from '../../lib/layout';
+import withApollo from '../../lib/withApollo';
 
-export default withData(() => (
-  <Layout title="Rick and Morty Wiki | Character">
-    <CharacterDetails />
-  </Layout>
-));
+export default withApollo(CharacterDetails);

@@ -18,9 +18,9 @@ const Layout = ({ children, title }) => (
         />
       </Head>
 
-      <Box position="relative" minHeight="100vh">
+      <Box position="relative">
         <Navbar />
-        {children}
+        <Box minHeight="100vh">{children}</Box>
         <Footer />
       </Box>
     </DarkMode>

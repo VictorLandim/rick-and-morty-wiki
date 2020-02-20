@@ -52,7 +52,7 @@ const Filter = props => {
   return (
     <Box border="0px solid gray" borderRadius={5} mt="20px" mb="20px">
       <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px" as="form" onSubmit={onFilter}>
-        <Input placeholder="No ame" value={name} onChange={e => setName(e.target.value)} />
+        <Input placeholder="No name" value={name} onChange={e => setName(e.target.value)} />
         <Select placeholder="No status" value={status} onChange={e => setStatus(e.target.value)}>
           <option value="Alive">Alive</option>
           <option value="Dead">Dead</option>

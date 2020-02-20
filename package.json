@@ -15,7 +15,7 @@
     "emotion-theming": "^10.0.27",
     "graphql": "^14.6.0",
     "next": "^9.2.2",
-    "next-apollo": "^3.1.10",
+    "next-with-apollo": "^5.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-icons": "^3.9.0",

@@ -4,13 +4,13 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { Heading, SimpleGrid, Text } from '@chakra-ui/core';
 
-import CharacterItem from '../../components/common/CharacterItem';
-import Loader from '../../components/common/Loader';
+import { CharacterItem, Loader } from '../../components/common';
 import Filter from '../../components/layout/Filter';
 import Pagination from '../../components/layout/Pagination';
 
 import { GET_CHARACTER_LIST } from '../../lib/queries';
 import { Error, Container } from './styles';
+import Layout from '../../lib/layout';
 
 const CharacterList = () => {
   const INITIAL_FILTER = {
@@ -76,15 +76,17 @@ const CharacterList = () => {
   };
 
   return (
-    <Container>
-      <Heading as="h1" fontSize="36px" mb="45px" textAlign="center">
-        Find Rick and Morty characters
-      </Heading>
+    <Layout title="Rick and Morty Wiki">
+      <Container>
+        <Heading as="h1" fontSize="36px" mb="45px" textAlign="center">
+          Find Rick and Morty characters
+        </Heading>
 
-      <Filter setFilter={setFilter} onFilter={() => {}} />
+        <Filter setFilter={setFilter} onFilter={() => {}} />
 
-      {renderContent()}
-    </Container>
+        {renderContent()}
+      </Container>
+    </Layout>
   );
 };
 

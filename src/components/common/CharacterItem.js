@@ -15,7 +15,6 @@ const CharacterItem = props => {
       shadow="md"
       transition="0.3s all"
       _hover={{
-        // transform: 'translateY(-5px)'
         transform: 'scale(1.05)'
       }}
     >

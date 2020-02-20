@@ -39,8 +39,8 @@ Alternatively, you can build it from source following the steps bellow:
 
 - [x] Implement pagination.
 - [x] Implement dark mode.
+- [x] Test components with @testing-library/react and @apollo/react-testing.
 - [ ] Create "loading card" component.
-- [ ] Test components with @react-testing-library.
 
 ## Credits:
 

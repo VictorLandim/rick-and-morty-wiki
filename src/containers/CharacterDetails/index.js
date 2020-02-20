@@ -16,7 +16,7 @@ import {
   Divider
 } from '@chakra-ui/core';
 import { GET_CHARACTER_DETAILS } from '../../lib/queries';
-import Loader from '../../components/common/Loader';
+import { Loader } from '../../components/common';
 import { Error } from '../CharacterList/styles';
 import { Title, Episode } from './styles';
 import Layout from '../../lib/layout';
@@ -32,12 +32,9 @@ const CharacterDetails = () => {
     fetchPolicy: 'cache-first'
   });
 
-  if (loading || !data) return <Loader />;
-  if (error) return <Error error={error} message="Error fetching character data..." />;
-
-  const { name, image, status, species, type, gender, origin, location, episode } = data[
-    'character'
-  ];
+  const { name, image, status, species, type, gender, origin, location, episode } = data
+    ? data['character']
+    : {};
 
   const renderEpisodes = () => (
     <ul>
@@ -47,8 +44,11 @@ const CharacterDetails = () => {
     </ul>
   );
 
-  return (
-    <Layout title="Rick and Morty Wiki | Character">
+  const renderContent = () => {
+    if (loading || !data) return <Loader />;
+    if (error) return <Error error={error} message="Error fetching character data..." />;
+
+    return (
       <Box
         padding={{ md: '20px', sm: '20px', xs: '20px' }}
         marginLeft={{ md: '200px', sm: '20px', xs: '20px' }}
@@ -100,8 +100,10 @@ const CharacterDetails = () => {
           {renderEpisodes()}
         </Box>
       </Box>
-    </Layout>
-  );
+    );
+  };
+
+  return <Layout title="Rick and Morty Wiki | Character">{renderContent()}</Layout>;
 };
 
 export default CharacterDetails;

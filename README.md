@@ -25,6 +25,7 @@ Alternatively, you can build it from source following the steps bellow:
 - [ ] Create details page.
 - [x] Implement filters.
 - [x] Add meta tags.
+- [ ] Add route loading screen.
 
 ### Bugs 🐛
 

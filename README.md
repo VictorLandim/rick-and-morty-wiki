@@ -13,12 +13,12 @@ The app is live on: [Rick and Morty Wiki](https://rick-n-morty-wiki.netlify.com/
 - [x] Render empty results message.
 - [x] Make the design responsive.
 - [ ] Create details page.
-- [ ] Implement filters.
+- [x] Implement filters.
 - [x] Add meta tags.
 
 ### Bugs 🐛
 - [ ] Fix card flex behaviour.
-- [ ] Fix dark mode bug.
+- [x] Fix dark mode bug.
 
 ### Extra ⭐
 - [x] Implement pagination.
@@ -26,7 +26,6 @@ The app is live on: [Rick and Morty Wiki](https://rick-n-morty-wiki.netlify.com/
 - [ ] Test components with @react-testing-library.
 - [ ] Add e2e tests using Cypresss.
 - [x] Implement dark mode.
-- [ ] Optmizide GraphQL queries (share listing with details queries)
 
 
 ## Credits:

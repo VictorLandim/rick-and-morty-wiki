@@ -10,13 +10,18 @@ const Pagination = ({ next, prev, onNext, onPrev, pages }) => {
   return (
     <Box mt="20px" mb="10px" d="flex">
       {prev && (
-        <Button size="sm" leftIcon="arrow-back" onClick={onPrev}>
+        <Button data-testid="pagination-prev" size="sm" leftIcon="arrow-back" onClick={onPrev}>
           {prev}
         </Button>
       )}
-      <Tag size="sm" marginLeft="5px" marginRight="5px">{`${currentPage()}/${pages}`}</Tag>
+      <Tag
+        data-testid="pagination-page"
+        size="sm"
+        marginLeft="5px"
+        marginRight="5px"
+      >{`${currentPage()}/${pages}`}</Tag>
       {next && (
-        <Button size="sm" rightIcon="arrow-forward" onClick={onNext}>
+        <Button data-testid="pagination-next" size="sm" rightIcon="arrow-forward" onClick={onNext}>
           {next}
         </Button>
       )}

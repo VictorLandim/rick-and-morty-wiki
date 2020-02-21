@@ -82,6 +82,7 @@ const CharacterItem = props => {
 
         <Link href="/character/[pid]" as={`/character/${id}`}>
           <Button
+            data-testid="item-button"
             as="a"
             alignSelf="flex-end"
             rightIcon="arrow-forward"

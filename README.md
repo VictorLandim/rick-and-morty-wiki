@@ -11,7 +11,7 @@ The app is live on: [Rick and Morty Wiki](https://rick-n-morty-wiki.netlify.com/
 Alternatively, you can build it from source following the steps bellow:
 
 - Run `git clone https://github.com/VictorLandim/rick-and-morty-wiki.git` to clone the repo;
-- Run `yarn` to install dependencies.;
+- Run `yarn` to install dependencies;
 - Run `yarn test` to run the tests;
 - Run `yarn dev` to launch it in development;
 - Run `yarn build` to build it and then run `yarn start` to launch it in production;

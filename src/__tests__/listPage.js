@@ -29,7 +29,7 @@ const mocks = [
 describe('List page', () => {
   afterEach(cleanup);
 
-  it('runs the mocked query', () => {
+  it('runs the mocked graphQL query', () => {
     const { container } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <List />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, findByTestId, findByText } from '@testing-library/react';
+import { render, cleanup, findByTestId, findByText, findAllByTestId } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import { gql } from 'apollo-boost';
 
@@ -29,7 +29,27 @@ const mocks = [
 describe('List page', () => {
   afterEach(cleanup);
 
-  it('renders title', async () => {
+  it('runs the mocked query', () => {
+    const { container } = render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <List />
+      </MockedProvider>
+    );
+
+    expect(container).toBeInTheDocument();
+  });
+
+  it('renders the filter', () => {
+    const { container } = render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <List />
+      </MockedProvider>
+    );
+
+    expect(container).toBeInTheDocument();
+  });
+
+  it('renders the title with content', async () => {
     const { container, getByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <List />
@@ -42,5 +62,19 @@ describe('List page', () => {
     expect(getByText('Find Rick and Morty characters')).toBeInTheDocument();
     expect(titleElement).toBeTruthy();
     expect(titleContent).toBeTruthy();
+  });
+
+  it('renders 20 characters on start', async () => {
+    const { container } = render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <List />
+      </MockedProvider>
+    );
+
+    const characterItems = await findAllByTestId(container, 'character-item');
+    const characterItemContainer = await findByTestId(container, 'character-item-container');
+
+    expect(characterItemContainer).toBeInTheDocument();
+    expect(characterItems).toHaveLength(20);
   });
 });

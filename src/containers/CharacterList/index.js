@@ -61,9 +61,14 @@ const CharacterList = () => {
         {!characterData ? (
           <Error message="Could not find any characters for that search..." />
         ) : (
-          <SimpleGrid columns={{ md: 5, sm: 2, xs: 1 }} spacingX="30px" spacingY="30px">
+          <SimpleGrid
+            data-testid="character-item-container"
+            columns={{ md: 5, sm: 2, xs: 1 }}
+            spacingX="30px"
+            spacingY="30px"
+          >
             {characterData.map(character => (
-              <CharacterItem key={character.id} {...character} />
+              <CharacterItem data-testid="character-item" key={character.id} {...character} />
             ))}
           </SimpleGrid>
         )}
@@ -81,7 +86,7 @@ const CharacterList = () => {
           Find Rick and Morty characters
         </Heading>
 
-        <Filter setFilter={setFilter} />
+        <Filter data-testid="filter" setFilter={setFilter} />
 
         {renderContent()}
       </Container>

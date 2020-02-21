@@ -10,6 +10,7 @@ const CharacterItem = props => {
 
   return (
     <PseudoBox
+      data-testid="character-item"
       borderWidth="1px"
       rounded="lg"
       overflow="hidden"

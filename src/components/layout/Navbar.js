@@ -1,9 +1,19 @@
 import React from 'react';
-import { Box, Link, PseudoBox, Heading, useColorMode, Image, IconButton } from '@chakra-ui/core';
+import Link from 'next/link';
+import {
+  Box,
+  Link as ChakraLink,
+  PseudoBox,
+  Heading,
+  useColorMode,
+  IconButton,
+  Icon
+} from '@chakra-ui/core';
 import { FaGithub, FaSun, FaMoon } from 'react-icons/fa';
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <PseudoBox
       borderBottom="1px solid blue.500"
@@ -20,16 +30,16 @@ const Navbar = () => {
         justifyContent="space-between"
         flexDir={{ md: 'row', sm: 'column', xs: 'column' }}
       >
-        <Link
+        <ChakraLink
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/VictorLandim/rick-and-morty-wiki"
         >
           <Box size={28} as={FaGithub} />
-        </Link>
+        </ChakraLink>
         <Link href="/">
-          <Box as="a" d="flex" alignItems="center" flexDir="row">
-            <Image src="/rick.svg" w="32px" alt="Rick Sanchez" />
+          <Box cursor="pointer" as="a" d="flex" alignItems="center" flexDir="row">
+            <Icon name="rick" size="32px" />
             <Heading
               marginLeft="15px"
               marginRight="15px"
@@ -40,7 +50,7 @@ const Navbar = () => {
             >
               Rick and Morty Wiki
             </Heading>
-            <Image src="/morty.svg" w="32px" alt="Morty Smith" />
+            <Icon name="morty" size="32px" />
           </Box>
         </Link>
         <IconButton

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Select,
@@ -20,7 +20,9 @@ const Filter = ({ setFilter }) => {
   const [type, setType] = useState('');
   const [gender, setGender] = useState('');
 
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
+
     setFilter({
       name: name === '' ? null : name,
       status: status === '' ? null : status,
@@ -47,9 +49,14 @@ const Filter = ({ setFilter }) => {
   };
 
   const defaultFilter = () => (
-    <Box border="0px solid gray" borderRadius={5} mt="20px" mb="20px">
-      <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px">
-        <Input placeholder="No name" value={name} onChange={e => setName(e.target.value)} />
+    <Box mt="20px" mb="20px">
+      <SimpleGrid columns={{ md: 6, xs: 1 }} spacing="15px" as="form" onSubmit={onSubmit}>
+        <Input
+          type="text"
+          placeholder="No name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
 
         <Select placeholder="No status" value={status} onChange={e => setStatus(e.target.value)}>
           <option value="Alive">Alive</option>
@@ -73,7 +80,7 @@ const Filter = ({ setFilter }) => {
         </Select>
 
         <Box d="flex">
-          <Button variantColor="blue" flex="1" marginRight="10px" onClick={onSubmit}>
+          <Button type="submit" variantColor="blue" flex="1" marginRight="10px">
             Filter
           </Button>
           <IconButton

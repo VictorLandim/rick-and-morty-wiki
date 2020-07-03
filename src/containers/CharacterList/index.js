@@ -14,11 +14,11 @@ import Layout from '../../utils/layout';
 
 const CharacterList = () => {
   const INITIAL_FILTER = {
-    name: null,
-    status: null,
-    species: null,
-    type: null,
-    gender: null
+    name: '',
+    status: '',
+    species: '',
+    type: '',
+    gender: ''
   };
 
   const [filter, setFilter] = useState({ ...INITIAL_FILTER });
@@ -61,17 +61,17 @@ const CharacterList = () => {
         {!characterData ? (
           <Error message="Could not find any characters for that search..." />
         ) : (
-          <SimpleGrid
-            data-testid="character-item-container"
-            columns={{ md: 5, sm: 2, xs: 1 }}
-            spacingX="30px"
-            spacingY="30px"
-          >
-            {characterData.map(character => (
-              <CharacterItem data-testid="character-item" key={character.id} {...character} />
-            ))}
-          </SimpleGrid>
-        )}
+            <SimpleGrid
+              data-testid="character-item-container"
+              columns={{ md: 5, sm: 2, xs: 1 }}
+              spacingX="30px"
+              spacingY="30px"
+            >
+              {characterData.map(character => (
+                <CharacterItem data-testid="character-item" key={character.id} {...character} />
+              ))}
+            </SimpleGrid>
+          )}
         {characterData && (
           <Pagination prev={prev} next={next} onPrev={onPrev} onNext={onNext} pages={pages} />
         )}

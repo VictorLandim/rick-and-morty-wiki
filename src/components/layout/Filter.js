@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Select,
@@ -24,11 +24,11 @@ const Filter = ({ setFilter }) => {
     e.preventDefault();
 
     setFilter({
-      name: name === '' ? null : name,
-      status: status === '' ? null : status,
-      species: species === '' ? null : species,
-      type: type === '' ? null : type,
-      gender: gender === '' ? null : gender
+      name,
+      status,
+      species,
+      type,
+      gender,
     });
   };
 
@@ -40,11 +40,11 @@ const Filter = ({ setFilter }) => {
     setGender('');
 
     setFilter({
-      name: null,
-      status: null,
-      species: null,
-      type: null,
-      gender: null
+      name,
+      status,
+      species,
+      type,
+      gender
     });
   };
 

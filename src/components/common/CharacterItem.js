@@ -90,6 +90,7 @@ const CharacterItem = props => {
             width="100%"
             variantColor="teal"
             size="md"
+            cursor="pointer"
           >
             Details
           </Button>

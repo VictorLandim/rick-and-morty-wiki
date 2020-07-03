@@ -1,15 +1,23 @@
 import React from 'react';
 import withApollo from 'next-with-apollo';
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import {
+  HttpLink,
+  ApolloClient,
+  InMemoryCache
+} from 'apollo-boost';
 
 export default withApollo(
   ({ initialState }) => {
-    return new ApolloClient({
-      uri: 'https://rickandmortyapi.com/graphql',
-
-      cache: new InMemoryCache().restore(initialState || {})
+    const client = new ApolloClient({
+      link: new HttpLink({
+        uri: "https://rickandmortyapi.com/graphql",
+      }),
+      cache: new InMemoryCache().restore(initialState || {}),
     });
+
+
+    return client;
   },
   {
     render: ({ Page, props }) => {

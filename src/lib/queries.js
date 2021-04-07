@@ -1,4 +1,4 @@
-export const GET_CHARACTER_LIST = gql => gql`
+export const GET_CHARACTER_LIST = (gql) => gql`
   query characters($page: Int!, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
       results {
@@ -36,8 +36,8 @@ export const GET_CHARACTER_LIST = gql => gql`
   }
 `;
 
-export const GET_CHARACTER_DETAILS = gql => gql`
-  query CharacterDetails($id: ID) {
+export const GET_CHARACTER_DETAILS = (gql) => gql`
+  query CharacterDetails($id: ID!) {
     character(id: $id) {
       id
       name

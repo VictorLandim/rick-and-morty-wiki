@@ -4,6 +4,10 @@ This project is a Rick and Morty Wiki. The application consists of a listing of 
 
 It is built with [React](https://reactjs.org/), [Next.js](https://nextjs.org/), [Chakra UI](https://chakra-ui.com/), [Apollo](https://www.apollographql.com/) and [GraphQL](https://graphql.org/).
 
+## Demo
+<img width="1512" alt="Screenshot 2024-01-21 at 11 57 30" src="https://github.com/VictorLandim/rick-and-morty-wiki/assets/5438965/3c5504f1-e3a1-4b1a-9014-42b014cb031b">
+
+
 ## How to run ▶️
 
 The app is live on: [Rick and Morty Wiki](https://rick-n-morty-wiki.netlify.com/)
